@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://de78u6sepvyir"]
+
+[ext_resource type="Script" uid="uid://cjau8psnsg63b" path="res://ball.gd" id="1_x8fbi"]
+[ext_resource type="AudioStream" uid="uid://hg1hj335rkbw" path="res://assets/gameboy-pluck-41265.mp3" id="2_41u45"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_41u45"]
+size = Vector2(4, 4)
+
+[node name="Ball" type="CharacterBody2D"]
+motion_mode = 1
+slide_on_ceiling = false
+wall_min_slide_angle = 0.0
+script = ExtResource("1_x8fbi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(256, 128)
+shape = SubResource("RectangleShape2D_41u45")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 254.0
+offset_top = 126.0
+offset_right = 258.0
+offset_bottom = 130.0
+
+[node name="TimerAccelerateBall" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="AudioBallHit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_41u45")
+
+[connection signal="timeout" from="TimerAccelerateBall" to="." method="_on_timer_accelerate_ball_timeout"]

@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1m11f6x5tg7u"]
+
+[ext_resource type="Script" uid="uid://us3drd572wob" path="res://walls.gd" id="1_xxkwp"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_oelu8"]
+a = Vector2(32, 0)
+b = Vector2(480, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_jt0p1"]
+a = Vector2(0, -64)
+b = Vector2(0, 320)
+
+[node name="Walls" type="StaticBody2D"]
+script = ExtResource("1_xxkwp")
+
+[node name="Top" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_oelu8")
+
+[node name="Bottom" type="CollisionShape2D" parent="."]
+position = Vector2(0, 256)
+shape = SubResource("SegmentShape2D_oelu8")
+
+[node name="LeftEdge" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftEdge"]
+shape = SubResource("SegmentShape2D_jt0p1")
+
+[node name="RightEdge" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightEdge"]
+position = Vector2(512, 0)
+shape = SubResource("SegmentShape2D_jt0p1")
+
+[connection signal="body_exited" from="LeftEdge" to="." method="_on_left_edge_body_exited"]
+[connection signal="body_exited" from="RightEdge" to="." method="_on_right_edge_body_exited"]

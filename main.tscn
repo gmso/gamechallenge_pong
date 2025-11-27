@@ -1,0 +1,48 @@
+[gd_scene load_steps=10 format=3 uid="uid://b821myv7hqira"]
+
+[ext_resource type="PackedScene" uid="uid://bx8j7svrtatrd" path="res://player.tscn" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://5kew2vksj747" path="res://main.gd" id="1_lquwl"]
+[ext_resource type="PackedScene" uid="uid://c1m11f6x5tg7u" path="res://walls.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://de78u6sepvyir" path="res://ball.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://xhrbej3ty1jw" path="res://hud.tscn" id="5_7mycd"]
+[ext_resource type="AudioStream" uid="uid://cr8c1maehx5ji" path="res://assets/lv-3-65586.mp3" id="6_272bh"]
+[ext_resource type="AudioStream" uid="uid://c2cg03kurd07" path="res://assets/game-start-6104.mp3" id="7_5vw27"]
+[ext_resource type="AudioStream" uid="uid://18s8tdcwvmaa" path="res://assets/experimental-8-bit-sound-270302.mp3" id="8_5vw27"]
+[ext_resource type="AudioStream" uid="uid://cbahtd0x422x5" path="res://assets/level-up-enhancement-8-bit-retro-sound-effect-153002.mp3" id="9_kek77"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_lquwl")
+
+[node name="HUD" parent="." instance=ExtResource("5_7mycd")]
+
+[node name="PlayerLeft" parent="." instance=ExtResource("1_ig7tw")]
+side = 0
+mode = 1
+
+[node name="PlayerRight" parent="." instance=ExtResource("1_ig7tw")]
+mode = 1
+
+[node name="Walls" parent="." instance=ExtResource("2_0xm2m")]
+
+[node name="Ball" parent="." instance=ExtResource("3_h2yge")]
+
+[node name="AudioBackground" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_272bh")
+
+[node name="AudioGameStart" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_5vw27")
+
+[node name="AudioScore" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_5vw27")
+
+[node name="AudioGameFinished" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_kek77")
+
+[connection signal="prepare_for_new_game_requested" from="HUD" to="." method="_on_hud_prepare_for_new_game_requested"]
+[connection signal="start_game_1_player_requested" from="HUD" to="." method="_on_hud_start_game_1_player_requested"]
+[connection signal="start_game_2_players_requested" from="HUD" to="." method="_on_hud_start_game_2_players_requested"]
+[connection signal="start_game_auto_requested" from="HUD" to="." method="_on_hud_start_game_auto_requested"]
+[connection signal="left_edge_crossed" from="Walls" to="." method="_on_walls_left_edge_crossed"]
+[connection signal="right_edge_crossed" from="Walls" to="." method="_on_walls_right_edge_crossed"]
+[connection signal="ball_position_updated" from="Ball" to="PlayerLeft" method="_on_ball_ball_position_updated"]
+[connection signal="ball_position_updated" from="Ball" to="PlayerRight" method="_on_ball_ball_position_updated"]

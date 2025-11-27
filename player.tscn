@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://bx8j7svrtatrd"]
+
+[ext_resource type="Script" uid="uid://dl6ltkfuity5r" path="res://player.gd" id="1_4flbx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sh265"]
+size = Vector2(8, 56)
+
+[node name="Player" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_4flbx")
+
+[node name="CollisionBar" type="CollisionShape2D" parent="."]
+position = Vector2(36, 128)
+shape = SubResource("RectangleShape2D_sh265")
+
+[node name="PlayerBar" type="ColorRect" parent="."]
+offset_left = 32.0
+offset_top = 100.0
+offset_right = 40.0
+offset_bottom = 156.0
+
+[node name="TimerStartHijackBot" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="TimerEndHijackBot2" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="TimerStartHijackBot" to="." method="_on_timer_start_hijack_bot_timeout"]
+[connection signal="timeout" from="TimerEndHijackBot2" to="." method="_on_timer_end_hijack_bot_2_timeout"]
