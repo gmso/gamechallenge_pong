@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://xhrbej3ty1jw"]
+[gd_scene load_steps=8 format=3 uid="uid://xhrbej3ty1jw"]
 
 [ext_resource type="Script" uid="uid://umclb4yi6073" path="res://hud.gd" id="1_37p78"]
+[ext_resource type="Texture2D" uid="uid://d0hyhx0d03efg" path="res://assets/icons8-slide-up-depressed.png" id="2_64ctp"]
+[ext_resource type="Texture2D" uid="uid://bar0ni4gwarp5" path="res://assets/icons8-slide-up-pressed.png" id="3_8sq4i"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_37p78"]
 bg_color = Color(0.12724835, 0.217816, 0.20891428, 1)
@@ -125,43 +127,49 @@ grow_vertical = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_640wx")
 text = "Play again?"
 
-[node name="MoveUpLeft" type="Button" parent="."]
+[node name="MoveUpLeft" type="TextureButton" parent="."]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 0
 offset_top = 48.0
 offset_right = 64.0
 offset_bottom = 112.0
-theme_override_font_sizes/font_size = 36
-text = "↑"
+texture_normal = ExtResource("2_64ctp")
+texture_pressed = ExtResource("3_8sq4i")
+stretch_mode = 3
 
-[node name="MoveDownLeft" type="Button" parent="."]
+[node name="MoveDownLeft" type="TextureButton" parent="."]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 0
 offset_top = 144.0
 offset_right = 64.0
 offset_bottom = 208.0
-theme_override_font_sizes/font_size = 36
-text = "↓"
+texture_normal = ExtResource("2_64ctp")
+texture_pressed = ExtResource("3_8sq4i")
+stretch_mode = 3
+flip_v = true
 
-[node name="MoveUpRight" type="Button" parent="."]
+[node name="MoveUpRight" type="TextureButton" parent="."]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 0
 offset_left = 576.0
 offset_top = 48.0
 offset_right = 640.0
 offset_bottom = 112.0
-theme_override_font_sizes/font_size = 36
-text = "↑"
+texture_normal = ExtResource("2_64ctp")
+texture_pressed = ExtResource("3_8sq4i")
+stretch_mode = 3
 
-[node name="MoveDownRight" type="Button" parent="."]
+[node name="MoveDownRight" type="TextureButton" parent="."]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 0
 offset_left = 576.0
 offset_top = 144.0
 offset_right = 640.0
 offset_bottom = 208.0
-theme_override_font_sizes/font_size = 36
-text = "↓"
+texture_normal = ExtResource("2_64ctp")
+texture_pressed = ExtResource("3_8sq4i")
+stretch_mode = 3
+flip_v = true
 
 [connection signal="pressed" from="Button1Player" to="." method="_on_button_1_player_pressed"]
 [connection signal="pressed" from="Button2Players" to="." method="_on_button_2_players_pressed"]
