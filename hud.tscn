@@ -24,15 +24,19 @@ grow_vertical = 2
 script = ExtResource("1_37p78")
 
 [node name="Background" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 256.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.072842635, 0.072842635, 0.072842635, 1)
 
 [node name="ScoreLeft" type="Label" parent="."]
 layout_mode = 0
+offset_left = 64.0
 offset_top = 16.0
-offset_right = 32.0
+offset_right = 96.0
 offset_bottom = 39.0
 text = "0"
 horizontal_alignment = 1
@@ -40,19 +44,20 @@ vertical_alignment = 1
 
 [node name="Hint" type="Label" parent="."]
 layout_mode = 0
-offset_left = 128.0
+offset_left = 192.0
 offset_top = 128.0
-offset_right = 376.0
+offset_right = 440.0
 offset_bottom = 232.0
 text = "Controls:
 - Left Player: W, S (up, down)
-- Right Player: O, L (up, down)"
+- Right Player: O, L (up, down)
+(or just use arrow buttons)"
 
 [node name="ScoreRight" type="Label" parent="."]
 layout_mode = 0
-offset_left = 480.0
+offset_left = 544.0
 offset_top = 16.0
-offset_right = 512.0
+offset_right = 576.0
 offset_bottom = 39.0
 text = "0"
 horizontal_alignment = 1
@@ -60,27 +65,27 @@ vertical_alignment = 1
 
 [node name="Button1Player" type="Button" parent="."]
 layout_mode = 0
-offset_left = 128.0
+offset_left = 192.0
 offset_top = 64.0
-offset_right = 176.0
+offset_right = 240.0
 offset_bottom = 95.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_37p78")
 text = "1P"
 
 [node name="Button2Players" type="Button" parent="."]
 layout_mode = 0
-offset_left = 232.0
+offset_left = 296.0
 offset_top = 64.0
-offset_right = 280.0
+offset_right = 344.0
 offset_bottom = 95.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_64ctp")
 text = "2P"
 
 [node name="ButtonAuto" type="Button" parent="."]
 layout_mode = 0
-offset_left = 336.0
+offset_left = 400.0
 offset_top = 64.0
-offset_right = 384.0
+offset_right = 448.0
 offset_bottom = 95.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_8sq4i")
 text = "Auto"
@@ -120,7 +125,53 @@ grow_vertical = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_640wx")
 text = "Play again?"
 
+[node name="MoveUpLeft" type="Button" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_top = 48.0
+offset_right = 64.0
+offset_bottom = 112.0
+theme_override_font_sizes/font_size = 36
+text = "⬆️"
+
+[node name="MoveDownLeft" type="Button" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_top = 144.0
+offset_right = 64.0
+offset_bottom = 208.0
+theme_override_font_sizes/font_size = 36
+text = "⬇️"
+
+[node name="MoveUpRight" type="Button" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_left = 576.0
+offset_top = 48.0
+offset_right = 640.0
+offset_bottom = 112.0
+theme_override_font_sizes/font_size = 36
+text = "⬆️"
+
+[node name="MoveDownRight" type="Button" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_left = 576.0
+offset_top = 144.0
+offset_right = 640.0
+offset_bottom = 208.0
+theme_override_font_sizes/font_size = 36
+text = "⬇️"
+
 [connection signal="pressed" from="Button1Player" to="." method="_on_button_1_player_pressed"]
 [connection signal="pressed" from="Button2Players" to="." method="_on_button_2_players_pressed"]
 [connection signal="pressed" from="ButtonAuto" to="." method="_on_button_auto_pressed"]
 [connection signal="pressed" from="ButtonPlayAgain" to="." method="_on_button_play_again_pressed"]
+[connection signal="button_down" from="MoveUpLeft" to="." method="_on_move_up_left_button_down"]
+[connection signal="button_up" from="MoveUpLeft" to="." method="_on_move_up_left_button_up"]
+[connection signal="button_down" from="MoveDownLeft" to="." method="_on_move_down_left_button_down"]
+[connection signal="button_up" from="MoveDownLeft" to="." method="_on_move_down_left_button_up"]
+[connection signal="button_down" from="MoveUpRight" to="." method="_on_move_up_right_button_down"]
+[connection signal="button_up" from="MoveUpRight" to="." method="_on_move_up_right_button_up"]
+[connection signal="button_down" from="MoveDownRight" to="." method="_on_move_down_right_button_down"]
+[connection signal="button_up" from="MoveDownRight" to="." method="_on_move_down_right_button_up"]

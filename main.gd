@@ -69,6 +69,17 @@ func _on_hud_start_game_auto_requested() -> void:
 	$PlayerRight.init_player_bot()
 	start_new_game()
 
-
 func _on_hud_prepare_for_new_game_requested() -> void:
 	$AudioBackground.play()
+
+func _on_hud_move_up_left_button_toggled(pressed: bool) -> void:
+	$PlayerLeft.move_up_pressed = pressed
+
+func _on_hud_move_down_left_button_toggled(pressed: bool) -> void:
+	$PlayerLeft.move_down_pressed = pressed
+
+func _on_hud_move_up_right_button_toggled(pressed: bool) -> void:
+	$PlayerRight.move_up_pressed = pressed
+
+func _on_hud_move_down_right_button_toggled(pressed: bool) -> void:
+	$PlayerRight.move_down_pressed = pressed

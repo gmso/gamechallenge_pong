@@ -14,21 +14,23 @@ b = Vector2(0, 320)
 script = ExtResource("1_xxkwp")
 
 [node name="Top" type="CollisionShape2D" parent="."]
+position = Vector2(64, 0)
 shape = SubResource("SegmentShape2D_oelu8")
 
 [node name="Bottom" type="CollisionShape2D" parent="."]
-position = Vector2(0, 256)
+position = Vector2(64, 256)
 shape = SubResource("SegmentShape2D_oelu8")
 
 [node name="LeftEdge" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftEdge"]
+position = Vector2(64, 0)
 shape = SubResource("SegmentShape2D_jt0p1")
 
 [node name="RightEdge" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightEdge"]
-position = Vector2(512, 0)
+position = Vector2(576, 0)
 shape = SubResource("SegmentShape2D_jt0p1")
 
 [connection signal="body_exited" from="LeftEdge" to="." method="_on_left_edge_body_exited"]

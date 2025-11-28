@@ -8,15 +8,16 @@ size = Vector2(8, 56)
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_4flbx")
+side = 0
 
 [node name="CollisionBar" type="CollisionShape2D" parent="."]
-position = Vector2(36, 128)
+position = Vector2(99, 128)
 shape = SubResource("RectangleShape2D_sh265")
 
 [node name="PlayerBar" type="ColorRect" parent="."]
-offset_left = 32.0
+offset_left = 95.0
 offset_top = 100.0
-offset_right = 40.0
+offset_right = 103.0
 offset_bottom = 156.0
 
 [node name="TimerStartHijackBot" type="Timer" parent="."]

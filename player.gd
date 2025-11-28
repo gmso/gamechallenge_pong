@@ -8,7 +8,9 @@ enum Mode {MANUAL, BOT}
 
 var player_speed = 200 # in pixels/sec
 var last_known_ball_position: Vector2
-var bot_hijacked = false
+var bot_hijacked: bool = false
+var move_up_pressed: bool = false
+var move_down_pressed: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -42,17 +44,17 @@ func _physics_process(_delta: float) -> void:
 
 func set_direction_manual() -> Vector2:
 	if side == PlayerSide.LEFT:
-		if Input.is_action_pressed("letter_w"):
+		if Input.is_action_pressed("letter_w") or move_up_pressed:
 			return Vector2.UP
-		elif Input.is_action_pressed("letter_s"):
+		elif Input.is_action_pressed("letter_s") or move_down_pressed:
 			return Vector2.DOWN
 			
 	elif side == PlayerSide.RIGHT:
-		if Input.is_action_pressed("letter_o"):
+		if Input.is_action_pressed("letter_o") or move_up_pressed:
 			return Vector2.UP
-		elif Input.is_action_pressed("letter_l"):
+		elif Input.is_action_pressed("letter_l") or move_down_pressed:
 			return Vector2.DOWN
-			
+	
 	return Vector2.ZERO
 	
 

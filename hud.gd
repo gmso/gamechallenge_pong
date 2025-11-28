@@ -4,6 +4,10 @@ signal start_game_1_player_requested
 signal start_game_2_players_requested
 signal start_game_auto_requested
 signal prepare_for_new_game_requested
+signal move_up_left_button_toggled(pressed:bool)
+signal move_down_left_button_toggled(pressed:bool)
+signal move_up_right_button_toggled(pressed:bool)
+signal move_down_right_button_toggled(pressed:bool)
 
 # Called when the node enters the scene tree for the first time.
 #func _ready() -> void:
@@ -48,3 +52,28 @@ func _on_button_play_again_pressed() -> void:
 	$Button2Players.show()
 	$ButtonAuto.show()
 	prepare_for_new_game_requested.emit()
+
+
+func _on_move_up_left_button_down() -> void:
+	move_up_left_button_toggled.emit(true)
+
+func _on_move_up_left_button_up() -> void:
+	move_up_left_button_toggled.emit(false)
+
+func _on_move_down_left_button_down() -> void:
+	move_down_left_button_toggled.emit(true)
+
+func _on_move_down_left_button_up() -> void:
+	move_down_left_button_toggled.emit(false)
+
+func _on_move_up_right_button_down() -> void:
+	move_up_right_button_toggled.emit(true)
+
+func _on_move_up_right_button_up() -> void:
+	move_up_right_button_toggled.emit(false)
+
+func _on_move_down_right_button_down() -> void:
+	move_down_right_button_toggled.emit(true)
+
+func _on_move_down_right_button_up() -> void:
+	move_down_right_button_toggled.emit(false)
