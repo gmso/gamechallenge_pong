@@ -132,7 +132,7 @@ offset_top = 48.0
 offset_right = 64.0
 offset_bottom = 112.0
 theme_override_font_sizes/font_size = 36
-text = "⬆️"
+text = "↑"
 
 [node name="MoveDownLeft" type="Button" parent="."]
 custom_minimum_size = Vector2(64, 64)
@@ -141,7 +141,7 @@ offset_top = 144.0
 offset_right = 64.0
 offset_bottom = 208.0
 theme_override_font_sizes/font_size = 36
-text = "⬇️"
+text = "↓"
 
 [node name="MoveUpRight" type="Button" parent="."]
 custom_minimum_size = Vector2(64, 64)
@@ -151,7 +151,7 @@ offset_top = 48.0
 offset_right = 640.0
 offset_bottom = 112.0
 theme_override_font_sizes/font_size = 36
-text = "⬆️"
+text = "↑"
 
 [node name="MoveDownRight" type="Button" parent="."]
 custom_minimum_size = Vector2(64, 64)
@@ -161,7 +161,7 @@ offset_top = 144.0
 offset_right = 640.0
 offset_bottom = 208.0
 theme_override_font_sizes/font_size = 36
-text = "⬇️"
+text = "↓"
 
 [connection signal="pressed" from="Button1Player" to="." method="_on_button_1_player_pressed"]
 [connection signal="pressed" from="Button2Players" to="." method="_on_button_2_players_pressed"]
